@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs '../libs'
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.example.abdul.listexample"
+        minSdkVersion 23
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile(name: 'Common', ext: 'aar');
+    compile(name: 'Primitives', ext: 'aar');
+    compile(name: 'Chart', ext: 'aar');
+    compile(name: 'Input', ext: 'aar');
+    compile(name: 'Data', ext: 'aar');
+    compile(name: 'List', ext: 'aar');
+    compile(name: 'Gauges', ext: 'aar');
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testCompile 'junit:junit:4.12'
+}
